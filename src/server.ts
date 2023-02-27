@@ -18,5 +18,5 @@ app.use(express.urlencoded({ extended: false }));
 createDatabase();
 
 const server = app.listen(port, () => {
-  Logger.INFO(`Iris:Server running on port [${port}]`);
+  Logger.INFO(`PostIt! running on port [${port}]`);
 });

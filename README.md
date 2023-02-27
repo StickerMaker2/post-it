@@ -1,2 +1,3 @@
-# silver-adventure
-The template for TypeScript backends
+# PostIt!
+
+PostIt! — The StickerMaker2 backend

@@ -31,7 +31,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: false,
-    default: "",
+    default: config.defaultAvatar,
   },
   status: {
     type: String,
@@ -51,11 +51,6 @@ const userSchema = new Schema({
   token: {
     type: String,
     required: false,
-  },
-  conversations: {
-    type: Array,
-    required: false,
-    default: [],
   },
   role: {
     type: String,

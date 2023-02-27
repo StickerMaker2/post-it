@@ -4,6 +4,7 @@
   "RS": "ALPHA",
   "BRANCH": "dev",
   "port": 8080,
-  "mongoURI": "",
+  "defaultAvatar": "https://www.gravatar.com/avatar/82b270637651695af7c785e77674df51?s=512&d=identicon",
+  "mongoURI": "mongodb://127.0.0.1:27017/StickerMaker2",
   "mongoURI.dev": ""
 }
