@@ -2,6 +2,7 @@ import express, { Router } from "express";
 import bcrypt from "bcryptjs";
 import User from "../../Database/models/User";
 import Logger from "../../utils/Logger";
+import Authorize from "../../utils/Authority";
 import { Error, ERR_BADAUTH } from "../Errors/Errors";
 import { API_BASE } from "../../config/config.json";
 
@@ -14,19 +15,8 @@ app.delete(`${API_BASE}accounts/delete`, async (req, res) => {
   const { username, password } = req.body;
 
   let Authorization = req.headers.authorization;
-
-  // @ts-ignore
-  if (Authorization) {
-    if (Authorization.startsWith("Bearer ")) {
-      // @ts-ignore
-      Authorization = Authorization.substring(7, Authorization.length);
-    } else {
-      return res.sendStatus(422);
-    }
-  } else {
-    return res.sendStatus(422);
-  }
-
+  Authorization = Authorize(Authorization, res);
+  
   try {
     const user = await User.findOne({ token: Authorization });
 
@@ -53,11 +43,13 @@ app.delete(`${API_BASE}accounts/delete`, async (req, res) => {
           token: Authorization.toString(),
         },
         function (err: any) {
-        if(err != null){
-          Logger.WARN(err);
-        } else {
-        Logger.INFO(`[Accounts: OP_DEL] Account ${username} deleted successfully.`)
-        }
+          if (err != null) {
+            Logger.WARN(err);
+          } else {
+            Logger.INFO(
+              `[Accounts: OP_DEL] Account ${username} deleted successfully.`
+            );
+          }
         }
       );
       // user.save();
