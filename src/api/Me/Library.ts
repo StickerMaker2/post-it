@@ -22,7 +22,7 @@ app.get(`${API_BASE}me/library`, async (req, res) => {
     return res.json(user.library); // Return the user's entire library
   } catch (err: any) {
     try {
-      res.sendStatus(400).json({ status: false }); // Bad request
+      res.sendStatus(400).json({ header: { status: false }}); // Bad request
     } catch (e: any) {
       Logger.ERROR(e.toString().substr(0, 100)); // Just briefly see the error
     }

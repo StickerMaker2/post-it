@@ -60,7 +60,9 @@ app.post(`${API_BASE}accounts/add`, async (req, res) => {
     // @ts-ignore
     delete user.password;
     return res.json({
-      status: true,
+      header: {
+        status: true,
+      },
     });
   } catch (err: any) {
     Logger.WARN(err);

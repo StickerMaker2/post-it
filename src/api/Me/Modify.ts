@@ -40,7 +40,7 @@ app.patch(`${API_BASE}me/modify`, async (req, res) => {
     });
   } catch (err: any) {
     try {
-      res.sendStatus(400).json({ status: false }); // Bad request
+      res.sendStatus(400).json({ header: { status: false }}); // Bad request
     } catch (e: any) {
       Logger.ERROR(e.toString().substr(0, 100)); // Just briefly see the error
     }

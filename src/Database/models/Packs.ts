@@ -6,38 +6,22 @@ const stickerSchema = new Schema({
     required: true,
     unique: true,
   },
-  name: {
+  artistName: {
     type: String,
     required: true,
-    default: "",
+    default: "Unknown",
   },
-  desc: {
-    type: String,
-    default: "",
-  },
-  author: {
+  packName: {
     type: String,
     required: true,
-    default: "",
-  },
-  content: {
-    type: String,
-    required: true,
-    default: "",
-  },
-  saves: {
-    type: Number,
-    required: true,
-    default: 0,
   },
   thumbnail: {
     type: String,
     required: false,
   },
-  packID: {
-    type: String,
-    required: true,
-    default: "",
+  stickers: { // Holds the stickers by ID
+    type: Array,
+    required: false,
   },
 });
 

@@ -22,8 +22,10 @@ const USER_SENTREQUEST_PREVIOUSLY =
 
 function Error(error: string) {
   return {
-    message: error,
-    status: false,
+    header: {
+      message: error,
+      status: false,
+    },
   };
 }
 
