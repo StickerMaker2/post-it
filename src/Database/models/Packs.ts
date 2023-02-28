@@ -1,7 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
 const stickerSchema = new Schema({
-  ID: {
+  packageId: {
+    // Is what "links" (or, appropriately put, **identifies**) the
+    // stickers to the package by its ID
     type: Number,
     required: true,
     unique: true,
@@ -11,15 +13,16 @@ const stickerSchema = new Schema({
     required: true,
     default: "Unknown",
   },
-  packName: {
+  packageName: {
     type: String,
     required: true,
   },
-  thumbnail: {
+  packageThumbnail: {
     type: String,
     required: false,
   },
-  stickers: { // Holds the stickers by ID
+  stickers: {
+    // Holds the stickers by ID
     type: Array,
     required: false,
   },

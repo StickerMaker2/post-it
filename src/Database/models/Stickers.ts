@@ -1,43 +1,52 @@
 import mongoose, { Schema } from "mongoose";
 
 const stickerSchema = new Schema({
-  ID: {
+  packageID: {
+    // Which package does this sticker belong to?
+    type: String,
+    required: true,
+    default: "",
+  },
+  stickerId: { // Identifier
     type: Number,
     required: true,
     unique: true,
   },
-  name: {
+  stickerName: {
     type: String,
     required: true,
     default: "",
   },
-  desc: {
+  stickerDesc: {
     type: String,
     default: "",
   },
-  author: {
-    type: String,
-    required: true,
-    default: "",
-  },
-  content: {
+  stickerArtist: {
     type: String,
     required: true,
     default: "",
   },
-  saves: {
+  stickerContent: {
+    // Array of image links of different sizes / resolutions
+    /* Example:
+  [ // size is in pixels
+    "https://img.stickermaker.io/25.png"
+    "https://img.stickermaker.io/128.png"
+    "https://img.stickermaker.io/258.png"
+    "https://img.stickermaker.io/512.png"
+  ]  */
+    type: Array,
+    required: true,
+    default: [],
+  },
+  stickerSaves: {
     type: Number,
     required: true,
     default: 0,
   },
-  thumbnail: {
+  stickerThumbnail: {
     type: String,
     required: false,
-  },
-  packID: {
-    type: String,
-    required: true,
-    default: "",
   },
 });
 
