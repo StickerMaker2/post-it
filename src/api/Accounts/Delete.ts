@@ -16,7 +16,7 @@ app.delete(`${API_BASE}accounts/delete`, async (req, res) => {
 
   let Authorization = req.headers.authorization;
   Authorization = Authorize(Authorization, res);
-  
+
   try {
     const user = await User.findOne({ token: Authorization });
 
@@ -40,7 +40,7 @@ app.delete(`${API_BASE}accounts/delete`, async (req, res) => {
         {
           username: username.toString(),
           password: user.password,
-          token: Authorization.toString(),
+          token: Authorization?.toString(),
         },
         function (err: any) {
           if (err != null) {
@@ -61,9 +61,13 @@ app.delete(`${API_BASE}accounts/delete`, async (req, res) => {
     return res.json({
       status: false,
     });
-  } catch (err) {
-    res.sendStatus(400); // Bad request
-    Logger.ERROR(err);
+  } catch (err: any) {
+    try {
+      res.sendStatus(400).json({ status: false }); // Bad request
+    } catch (e: any) {
+      Logger.ERROR(e.toString().substr(0, 100)); // Just briefly see the error
+    }
+    Logger.ERROR(err.toString().substr(0, 100)); // Just briefly see the error
   }
 });
 

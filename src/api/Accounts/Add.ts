@@ -47,11 +47,11 @@ app.post(`${API_BASE}accounts/add`, async (req, res) => {
     });
 
     // Logger.INFO(`
-    
+
     // Email: ${req.body.email}\n
     // Username: ${req.body.username}\n
     // Password/Token: ${req.body.password}
-    
+
     // `);
 
     // @ts-ignore

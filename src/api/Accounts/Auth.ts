@@ -40,9 +40,13 @@ app.post(`${API_BASE}accounts/auth`, async (req, res) => {
       id: user.UID,
       token: user.token,
     });
-  } catch (err) {
-    res.sendStatus(400); // Bad request
-    Logger.ERROR(err);
+  } catch (err: any) {
+    try {
+      res.sendStatus(400).json({ status: false }); // Bad request
+    } catch (e: any) {
+      Logger.ERROR(e.toString().substr(0, 100)); // Just briefly see the error
+    }
+    Logger.ERROR(err.toString().substr(0, 100)); // Just briefly see the error
   }
 });
 

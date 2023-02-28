@@ -31,7 +31,7 @@ app.post(`${API_BASE}accounts/invalidate`, async (req, res) => {
       status: true,
     });
   } catch (err) {
-    res.sendStatus(400); // Bad request
+    res.sendStatus(400).json({ status: false }); // Bad request
     Logger.ERROR(err);
   }
 });

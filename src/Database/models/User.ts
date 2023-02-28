@@ -42,7 +42,7 @@ const userSchema = new Schema({
     type: String,
     required: false,
     unique: false,
-    default: "Hey there! I'm using Iris.",
+    default: "Hey, I use StickerMaker!",
   },
   tagId: {
     type: String,
@@ -55,6 +55,10 @@ const userSchema = new Schema({
   role: {
     type: String,
     default: "User",
+  },
+  library: {
+    type: Array,
+    default: [],
   },
 });
 

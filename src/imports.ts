@@ -5,12 +5,12 @@ import AAA from "./api/Accounts/Auth";
 import ADD from "./api/Accounts/Delete";
 import AIE from "./api/Accounts/Invalidate";
 
-// Sticker posting + editing
+// // Sticker posting + editing
 
-import STG from "./api/Stickers/Get";
-import STD from "./api/Stickers/Delete";
-import STM from "./api/Stickers/Modify";
-import STP from "./api/Stickers/Post";
+// import STG from "./api/Stickers/Get";
+// import STD from "./api/Stickers/Delete";
+// import STM from "./api/Stickers/Modify";
+// import STP from "./api/Stickers/Post";
 
 // @Me modifications
 import MEG from "./api/Me/Get";
@@ -29,11 +29,11 @@ app.use([
   ADD,
   AIE,
 
-  // Sticker posting + editing
-  STG,
-  STD,
-  STM,
-  STP,
+  // // Sticker posting + editing
+  // STG,
+  // STD,
+  // STM,
+  // STP,
 
   // @Me modifications
   MEG,
