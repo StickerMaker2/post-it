@@ -17,10 +17,9 @@ app.get(`${API_BASE}me/library`, async (req, res) => {
   try {
     const user = await User.findOne({ token: Authorization }); // Users are unique and are not expected to have more than one token
     if (!user) {
-      return res.status(403).json(Error(ERR_BADAUTH));
+      return res.json(Error(ERR_BADAUTH)).status(403);
     }
-
-    return res.json(JSON.stringify(JSON.parse(user.library))); // Return the user's entire library
+    return res.json(user.library); // Return the user's entire library
   } catch (err: any) {
     try {
       res.sendStatus(400).json({ status: false }); // Bad request
